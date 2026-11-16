@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Biblioteca | NASA Fire Intelligence</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#070d19;color:#f4f7fc;font-family:Arial,sans-serif}.top{padding:18px 5vw;border-bottom:1px solid #263956;display:flex;justify-content:space-between;align-items:center;gap:15px}.top a{color:#73c2ff;text-decoration:none;font-weight:bold}.wrap{padding:35px 5vw}.tag{color:#73c2ff;font-size:12px;letter-spacing:2px;font-weight:bold}.heading{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}h1{font-size:clamp(28px,5vw,46px);margin:10px 0}.desc{color:#a9b8cc;max-width:800px;line-height:1.6}iframe{width:100%;height:78vh;border:1px solid #263956;border-radius:7px;background:#111d30;margin-top:22px}.switch{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.switch a,.download{padding:10px 14px;border:1px solid #47617f;border-radius:4px;color:#dceaff;text-decoration:none;font-size:13px}.switch a:hover,.download:hover{border-color:#73c2ff;color:#73c2ff}.note{color:#8296b2;font-size:12px;margin-top:12px}@media(max-width:600px){iframe{height:68vh}.top{align-items:flex-start;flex-direction:column}}
+</style></head><body>
+<div class="top"><strong>NASA <span style="color:#73c2ff">FIRE INTELLIGENCE</span></strong><a href="index.html">← VOLVER AL INICIO</a></div>
+<main class="wrap"><div class="tag">BIBLIOTECA CIENTÍFICA / VISOR DE DOCUMENTOS</div><div class="heading"><h1 id="title">Documento del proyecto</h1><a id="download" class="download" href="#" download>DESCARGAR PDF ↓</a></div><p class="desc" id="description"></p><div class="switch"><a href="?doc=propuesta">Propuesta: Llama en caída libre</a><a href="?doc=fotos">Imágenes de referencia</a></div><iframe id="viewer" title="Visor de documento PDF"></iframe><p class="note">Si el visor no aparece en tu navegador, utiliza el botón “Descargar PDF” para abrir el archivo con un lector de documentos.</p></main>
+<script>
+const docs={
+ propuesta:{title:"Propuesta: Llama en caída libre",file:"assets/propuesta_nasa.pdf",desc:"Presentación del proyecto NASA Fire Intelligence. Incluye el planteamiento del problema, por qué el fuego se comporta de manera distinta en microgravedad, las cinco etapas del sistema, el papel de la inteligencia artificial, los beneficios y su impacto en futuras misiones."},
+ fotos:{title:"Imágenes de referencia NASA",file:"assets/fotos_nasa.pdf",desc:"Documento visual de referencia con material gráfico relacionado con la observación y el monitoreo de incendios. El PDF original contiene cinco páginas."}
+};
+const key=new URLSearchParams(location.search).get("doc")||"propuesta";
+const doc=docs[key]||docs.propuesta;
+document.title=doc.title+" | NASA Fire Intelligence";
+document.getElementById("title").textContent=doc.title;
+document.getElementById("description").textContent=doc.desc;
+document.getElementById("viewer").src=doc.file+"#view=FitH";
+document.getElementById("download").href=doc.file;
+</script></body></html>
